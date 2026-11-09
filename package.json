@@ -1,0 +1,30 @@
+{
+  "name": "@djcaptainplus/dynamic-property-maps",
+  "version": "1.0.0",
+  "description": "Map-like persistent storage using Minecraft Bedrock dynamic properties.",
+  "license": "ISC",
+  "author": "DjCaptainPlus",
+  "type": "module",
+  "main": "./dist/main.js",
+  "types": "./dist/main.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/main.d.ts",
+      "default": "./dist/main.js"
+    }
+  },
+  "scripts": {
+    "build": "bun build ./src/main.ts --target browser --format esm --outdir ./dist --dts --external '@minecraft/*' && bun run build:types",
+    "build:dev": "bun build ./src/main.ts --target browser --format esm --outfile ./scripts/main.js --external '@minecraft/*'",
+    "watch": "bun build ./src/main.ts --target browser --format esm --outfile ./scripts/main.js --external '@minecraft/*' --watch",
+    "build:types": "rollup ./dist/main.d.ts --file ./dist/index.d.ts --format es --plugin dts"
+  },
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "@typescript/typescript6": "^6.0.2",
+    "rollup": "^4.68.0",
+    "rollup-plugin-dts": "^6.5.1"
+  }
+}
